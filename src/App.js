@@ -13,46 +13,53 @@ class App extends Component {
       name: '',
       message: '',
       showItem: true,
+      insertbody: {}
     };
     this.stateChange = this.stateChange.bind(this);
   }
 
   render() {
+
     return (
-      <div className="App">
+      < div className="App" >
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
+        <br />
+        {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        {this.props.page !== 'Home' ? (
-          <div>
+        </p> */}
+        {
+          this.props.page !== 'Home' ? (
             <div>
-              <span>姓名：</span>
-              <input name='nameInput' value={this.state.name} onChange={this.stateChange} />
+              <div>
+                <span>姓名：</span>
+                <input className="ant-input" name='nameInput' value={this.state.name} onChange={this.stateChange} />
+              </div>
+              <br />
+              <div>
+                <span>內容：</span>
+                <input className="ant-input" name="messageInput" value={this.state.message} onChange={this.stateChange} />
+              </div>
+              <br />
+              <div>
+                <button className="ant-btn-primary" onClick={this.btnClick}>提交</button>
+              </div>
+              <br />
             </div>
-            <br />
-            <div>
-              <span>內容：</span>
-              <input name="messageInput" value={this.state.message} onChange={this.stateChange} />
-            </div>
-            <br />
-            <div>
-              <button onClick={this.btnClick}>Submit</button>
-            </div>
-            <br />
-          </div>
-        ) : (
-            <div>
-              <Home message={this.props.insertData} />
-            </div>
-          )}
-      </div>
+          ) : (
+              <div>
+                <Home message={this.state.insertbody} />
+              </div>
+            )
+        }
+      </div >
     );
   }
-
+  setLocalPage = () => {
+    this.props.setPage('App');
+  }
   btnClick = () => {
     const body = {
       name: this.state.name,
@@ -64,7 +71,8 @@ class App extends Component {
 
     this.setState({
       name: '',
-      message: ''
+      message: '',
+      insertbody: body
     })
   }
 

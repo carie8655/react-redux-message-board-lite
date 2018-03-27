@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Home from './component/Home'
+import Detail from './component/Detail'
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
@@ -22,10 +23,9 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={App}>
-                <IndexRoute component={Home} />
+                <Route path="home" component={Home} />
             </Route>
-            <Route path="index" component={Home}>
-            </Route>
+            <Route path="detail" component={Detail}> </Route>
         </Router>
     </Provider >,
     document.getElementById('root')
