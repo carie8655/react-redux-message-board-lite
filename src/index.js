@@ -6,7 +6,7 @@ import Home from './component/Home'
 import Detail from './component/Detail'
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers'

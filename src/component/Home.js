@@ -1,7 +1,6 @@
 import React, { Component } from 'react' // 引入React
 import { connect } from 'react-redux';
 import { setPageAction } from '../actions';
-import _ from 'lodash';
 import '../App.css';
 import { browserHistory } from 'react-router';
 
