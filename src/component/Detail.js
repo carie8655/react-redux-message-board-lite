@@ -6,23 +6,17 @@ import '../App.css';
 import { browserHistory } from 'react-router'
 
 class Detail extends Component {
-    constructor(props) {
-        super(props);
-        console.log(this.props.insertData)
-    }
+
     render() {
         return (
             <div>
-                {/* <div className="Detail">
-                    <p>姓名：{this.props.message.name}</p>
-                    <p>內容：{this.props.message.message}</p>
-                </div>
-                <button className="ant-btn-primary" onClick={this.returnBack}>返回上頁</button> */}
                 {_.map(this.props.insertData, (value, index) =>
                     <div className="returnContent" key={index}>
+                        <p>ID：{value.id}</p>
                         <p>姓名：{value.name}</p>
                         <p>內容：{value.message}</p>
                         <p>時間：{value.datetime}</p>
+                        <button className="ant-btn-primary" onClick={() => this.test(value)}>查看</button>
                     </div>
                     // <p key={index}>{value.name} {value.message}</p>
                 )}
@@ -33,16 +27,24 @@ class Detail extends Component {
 
         )
     }
+    test = (params) => {
+        browserHistory.push({
+            pathname: '/messagedetail',
+            state: { value: params }
+        })
+    }
 
     goBackToApp = () => {
-        browserHistory.push('/')
+
+        browserHistory.goBack();
         this.props.setPage('App')
     }
 }
 const mapStateToProps = (state) => {
     return {
         insertData: state.insertData,
-        page: state.changePage
+        page: state.changePage,
+        UID: state.setUID,
     }
 }
 const mapDispatchToProps = (dispatch) => ({

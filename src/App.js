@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { onInsertAction, setPageAction } from './actions';
+import { onInsertAction, setPageAction, setUID } from './actions';
 import { connect } from 'react-redux';
 import Home from './component/Home';
 import moment from 'moment';
@@ -62,12 +62,14 @@ class App extends Component {
   }
   btnClick = () => {
     const body = {
+      id: this.props.UID,
       name: this.state.name,
       message: this.state.message,
       datetime: moment().format('YYYY-MM-DD HH:mm:ss')
     }
     this.props.onInsert(body);
     this.props.setPage('Home');
+    this.props.setUID();
 
     this.setState({
       name: '',
@@ -96,6 +98,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     insertData: state.insertData,
+    UID: state.setUID,
     page: state.changePage
   }
 }
@@ -105,6 +108,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setPage: (params) => {
     dispatch(setPageAction(params))
+  },
+  setUID: () => {
+    dispatch(setUID())
   }
 })
 

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Home from './component/Home'
 import Detail from './component/Detail'
+import MessageDetail from './component/messageDetail';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
@@ -26,6 +27,7 @@ ReactDOM.render(
                 <Route path="home" component={Home} />
             </Route>
             <Route path="detail" component={Detail}> </Route>
+            <Route path="messagedetail" component={MessageDetail}> </Route>
         </Router>
     </Provider >,
     document.getElementById('root')

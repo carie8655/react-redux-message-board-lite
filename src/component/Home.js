@@ -33,7 +33,9 @@ class Home extends Component {
         )
     }
     checkhistory = () => {
-        browserHistory.push('/detail')
+        browserHistory.push({
+            pathname: '/detail'
+        })
     }
 
     returnBack = () => {
